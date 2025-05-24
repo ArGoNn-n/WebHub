@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Головна - Окуляри & Зір</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+    <header class="header" id="header"></header>
+
+    <main>
+        <section class="hero">
+            <h1>Все про окуляри та здоров’я очей</h1>
+            <p>Ваш провідник у світі оптики: від корекції зору до стильних аксесуарів. Дізнайтесь, як обрати ідеальні окуляри чи лінзи та піклуватись про свій зір.</p>
+            <a href="optics.html" class="btn">Розпочати</a>
+           <div class="hero-image">
+                      <img src="человек.png" alt="" class="overlay-image">
+            <img  src="головна-окуляри 1.jpg" alt="Окуляри" onclick="openModal('головна-окуляри 1.jpg')">
+                  </div>
+        </section>
+
+        <section class="section about">
+            <h2>Хто ми?</h2>
+            <p id="test">Ми — команда ентузіастів оптики, яка прагне зробити інформацію про окуляри доступною для кожного. Наша місія — допомогти вам знайти ідеальні рішення для зору та стилю. Ми віримо, що правильний підбір окулярів може не лише покращити ваш зір, а й підкреслити вашу індивідуальність. Дізнайтесь більше про те, як ми можемо допомогти вам піклуватись про здоров’я ваших очей!</p>
+            <div class="about-image"></div>
+        </section>
+
+        <section class="section categories">
+            <h2>Популярні категорії</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Корекція зору</h3>
+                    <p>Лінзи для міопії, гіперметропії та астигматизму.</p>
+                    <a href="optics.html" class="btn">Дізнатись</a>
+                                    </div>
+                <div class="card">
+                    <h3>Сонцезахисні окуляри</h3>
+                    <p>Захист від UV та стильний вигляд.</p>
+                                       <a href="sunglasses.html" class="btn">Дізнатись</a>
+                </div>
+                <div class="card">
+                    <h3>Захист від екранів</h3>
+                    <p>Фільтри синього світла для роботи за комп’ютером.</p>
+                    <a href="screen.html" class="btn">Дізнатись</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section why-us">
+            <h2>Чому обирають нас?</h2>
+            <ul>
+                <li>Вичерпна інформація про всі типи окулярів.</li>
+                <li>Поради від експертів-офтальмологів.</li>
+                <li>Інтерактивні інструменти для підбору.</li>
+                <li>Доступність на всіх пристроях.</li>
+            </ul>
+        </section>
+
+        <section class="section news">
+            <h2>Новинки в світі оптики</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Титанові оправи 2025</h3>
+                    <p>Легкість і міцність у новому дизайні.</p>
+                    <div class="card-image"><img src="головна-титанові оправи2.jpg" alt=""></div>
+                </div>
+                <div class="card">
+                    <h3>Поляризовані лінзи</h3>
+                    <p>Ідеальні для активного відпочинку.</p>
+                    <div class="card-image"><img src="головна-поляризовані лінзи2.png" alt=""></div>
+                </div>
+            </div>
+        </section>
+         <section class="section test-button">
+            <button id="testButton">Black or Red</button>
+            <!-- <div class="lab5"> -->
+            <a href="data-5.html" class="btn">DataBase</a>
+            <!-- </div> -->
+             <a href="paralax-6.html" class="btn">Паралакс</a>
+        </section>
+        
+    </main>
+
+    <footer class="footer" id="footer"></footer>
+
+        <!-- Модальне вікно -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage" src="" alt="Збільшене зображення">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

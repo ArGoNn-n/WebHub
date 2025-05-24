@@ -1,0 +1,16 @@
+{
+  "glasses": [
+    {
+      "id": "1",
+      "name": "Ray-Ban Classic",
+      "type": "Sunglasses",
+      "price": 150
+    },
+    {
+      "id": "2",
+      "name": "Oakley Sport",
+      "type": "Sports",
+      "price": 200
+    }
+  ]
+}

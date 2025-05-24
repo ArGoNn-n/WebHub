@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дані з MySQL</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #333; }
+    table { border-collapse: collapse; width: 100%; max-width: 800px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    button { padding: 5px 10px; cursor: pointer; }
+    button:disabled { cursor: not-allowed; opacity: 0.5; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+    <header id="header"></header>
+    <br>
+    <br>
+    <br>
+    <br>
+  <h1>Список окулярів (MySQL)</h1>
+  <table id="glasses-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Назва</th>
+        <th>Тип</th>
+        <th>Ціна</th>
+        <th>Кількість</th>
+        <th>Дія</th>
+      </tr>
+    </thead>
+    <tbody id="glasses-body"></tbody>
+  </table>
+  <p id="error" class="error"></p>
+<script src="script.js"></script>
+  <script>
+    // Функція для завантаження даних
+    async function loadGlasses() {
+      try {
+        const response = await fetch('http://localhost:3000/api/glasses-mysql');
+        if (!response.ok) throw new Error('Помилка сервера');
+        const data = await response.json();
+        const tbody = document.getElementById('glasses-body');
+        tbody.innerHTML = ''; // Очистити таблицю
+        data.forEach(glass => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${glass.id}</td>
+            <td>${glass.name}</td>
+            <td>${glass.type}</td>
+            <td>${glass.price}</td>
+            <td>${glass.quantity}</td>
+            <td>
+              <button onclick="buyGlass(${glass.id})" ${glass.quantity <= 0 ? 'disabled' : ''}>
+                Купити
+              </button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+        document.getElementById('error').textContent = '';
+      } catch (error) {
+        document.getElementById('error').textContent = 'Помилка: ' + error.message;
+      }
+    }
+
+    // Функція для покупки
+    async function buyGlass(id) {
+      try {
+        const response = await fetch(`http://localhost:3000/api/glasses-mysql/buy/${id}`, {
+          method: 'POST'
+        });
+        if (!response.ok) throw new Error('Помилка сервера');
+        await response.json();
+        loadGlasses(); // Оновити таблицю
+      } catch (error) {
+        document.getElementById('error').textContent = 'Помилка: ' + error.message;
+      }
+    }
+
+    // Завантажити дані при відкритті сторінки
+    loadGlasses();
+  </script>
+</body>
+</html>
