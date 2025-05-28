@@ -3,3 +3,5 @@ Disallow: /admin/
 Disallow: /cart/
 Allow: /
 Sitemap: https://web-hub-green.vercel.app/sitemap.xml
+
+
